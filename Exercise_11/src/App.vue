@@ -8,17 +8,17 @@
                 <p>Add count: {{ someText | add-count }}</p>
                 </hr>
                 <p>Reverse computed: {{ reversedText }}</p>
-                <p>Add count computed: {{ appendLength }}</p>
-
-                <!-- Exercise 4 -->
-                <!-- Share the Computed Property rebuilding Exercise 2 via a Mixin -->
+                <p>Add count computed mixin: {{ appendLength }}</p>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { appendLegthMixin } from './AppendLengthMixin.js';
+
     export default {
+        mixins: [appendLegthMixin],
         data() {
             return {
                 someText: ''
@@ -32,9 +32,6 @@
         computed: {
             reversedText() {
                 return this.someText.split("").reverse().join("");
-            },
-            appendLength() {
-                return this.someText + ' (' + this.someText.length + ')';
             }
         }
     }
