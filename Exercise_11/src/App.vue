@@ -6,9 +6,9 @@
                 <input type="text" v-model="someText" name="someText" id="someText"/>
                 <p>Reverse text filter: {{ someText | reverseText }}</p>
                 <p>Add count: {{ someText | add-count }}</p>
-
-                <!-- Exercise 3 -->
-                <!-- Do the same as in Exercises 1 & 2, now with Computed Properties -->
+                </hr>
+                <p>Reverse computed: {{ reversedText }}</p>
+                <p>Add count computed: {{ appendLength }}</p>
 
                 <!-- Exercise 4 -->
                 <!-- Share the Computed Property rebuilding Exercise 2 via a Mixin -->
@@ -27,6 +27,14 @@
         filters: {
             reverseText(value) {
                 return value.split("").reverse().join("");
+            }
+        },
+        computed: {
+            reversedText() {
+                return this.someText.split("").reverse().join("");
+            },
+            appendLength() {
+                return this.someText + ' (' + this.someText.length + ')';
             }
         }
     }
