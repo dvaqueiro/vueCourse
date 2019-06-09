@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <h1>Filters & Mixins</h1>
-                <!-- Exercise 1) -->
-                <!-- Build a local Filter which reverses the Text it is applied on -->
+                <input type="text" v-model="someText" name="someText" id="someText"/>
+                <p>Reverse text filter: {{ someText | reverseText }}</p>
 
                 <!-- Exercise 2 -->
                 <!-- Build a global Filter which counts the length of a word and it appends it -->
@@ -22,6 +22,16 @@
 
 <script>
     export default {
+        data() {
+            return {
+                someText: ''
+            }
+        },
+        filters: {
+            reverseText(value) {
+                return value.split("").reverse().join("");
+            }
+        }
     }
 </script>
 
